@@ -1,9 +1,9 @@
 package eventago
 
-
 import (
 	uuid "dummy_bank/dummycqrs/eventago/internal/uuid"
 )
+
 // EventStream define all member veriable for event stram
 type EventStream struct {
 	eid       string
@@ -13,12 +13,17 @@ type EventStream struct {
 	version   int
 }
 
-func init() {
-	eid := uuid.NewUUID()
-	event := make([]string,10)
-	newEvent := make([]string,10)
-	className := ""
-	version := 0
+// EventStreamRoot EventStreamRoot
+type EventStreamRoot interface {
+	getUUID() string
+}
+
+func (es *EventStream) init() {
+	es.eid = uuid.NewUUID()
+	es.event = make([]string, 10)
+	es.newEvent = make([]string, 10)
+	es.className = ""
+	es.version = 0
 }
 
 // GetClassName return class name
@@ -44,19 +49,18 @@ func (es *EventStream) GetVersion() int {
 // AddEvents call each events in array and send to AddEvent function.
 func (es *EventStream) AddEvents() {
 	for _, events := range es.newEvent {
-				go AddEvent(events)
-			}
+		es.AddEvent(events)
+	}
 }
 
 // AddEvent is used for add event in array and update new events.
-func AddEvent(ev *DomainEvent) {
-	events = []ev
-	newEvent = []ev
+func (es *EventStream) AddEvent(events string) {
+	es.event = append(es.event, events)
+	es.newEvent = append(es.event, events)
 }
 
 // MarkNewEventsProcessed is used for create first event and make new event array.
 func (es *EventStream) MarkNewEventsProcessed() {
 	es.version = 0
-	es.newEvent = make([]string)
+	// es.newEvent = make([]string)
 }
-

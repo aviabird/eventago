@@ -1,7 +1,13 @@
 package eventago
 
-// DomainEvent interface for get and set aggregate id
-type DomainEvent interface {
+// DomainEvent DomainEvent
+type DomainEvent struct {
+	aggregateID string
+	event       string
+}
+
+// DomainEventRoot interface for get and set aggregate id
+type DomainEventRoot interface {
 	setAggregateId()
 	getAggregateId()
 }

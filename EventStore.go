@@ -1,6 +1,7 @@
 package eventago
 
+// EventStore   EventStore
 type EventStore interface {
-	find(UUId string)
+	find(UUID string)
 	commit(eventstram EventStream)
 }

@@ -1,20 +1,22 @@
 package eventago
 
+// DefaultDomainEventBase declaration of fields
 type DefaultDomainEventBase struct {
-	aggregateId string
+	aggregateID string
 	data        []string
 }
 
+// DefaultDomainEvent DefaultDomainEvent
 type DefaultDomainEvent interface {
 	assertPropertyExists(name string)
-	setAggregateId(aggregateId string)
+	setAggregateId(aggregateID string)
 	getAggregateId()
 }
 
 func (dde *DefaultDomainEventBase) init() {
-	for key, value := range dde.data {
+	// for key, value := range dde.data {
 
-	}
+	// }
 }
 
 func (dde *DefaultDomainEventBase) assertPropertyExists(name string) {
@@ -23,10 +25,10 @@ func (dde *DefaultDomainEventBase) assertPropertyExists(name string) {
 	// }
 }
 
-func (dde *DefaultDomainEventBase) setAggregateId(aggregateId string) {
-	dde.aggregateId = aggregateId
+func (dde *DefaultDomainEventBase) setAggregateID(aggregateID string) {
+	dde.aggregateID = aggregateID
 }
 
-func (dde *DefaultDomainEventBase) getAggregateId() string {
-	return dde.aggregateId
+func (dde *DefaultDomainEventBase) getAggregateID() string {
+	return dde.aggregateID
 }

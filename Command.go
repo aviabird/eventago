@@ -1,4 +1,11 @@
 package eventago
 
-type Command interface {
+// Command used for locator and commands
+type Command struct {
+	locator string
+	command string
+}
+
+// CommandRoot Command
+type CommandRoot interface {
 }
