@@ -2,35 +2,37 @@ package eventago
 
 // EventSourceRepository EventSourceRepository
 type EventSourceRepository struct {
-	eventStore string
-	eventBus   string
-	streams    []string
+	// eventStore EventStore
+	// eventBus   EventMessageBus
+	streams []string
 }
 
-func (esr EventSourceRepository) init(eventstore EventStore, eventbus EventMessageBus) {
-	// esr.eventStore = eventstore
-	// esr.eventBus = eventbus
-}
+// func (esr EventSourceRepository) init() {
+// 	esr.eventStore = EventStore
+// 	esr.eventBus = EventMessageBus
+// }
 
-func (esr EventSourceRepository) find(classname string, expectedVersion int, UUID string) {
-	// err, eventStream := EventStore.find(UUId)
-	// if err != nil {
-	// 	return
-	// }
-	// esr.streams[UUId] = eventStream
+// func (esr EventSourceRepository) find(classname string, expectedVersion int, UUID string) (string, error) {
 
-	// aggregateRootClass := EventStream.GetClassName(eventStream)
+// 	err, eventStream := EventStore.find(UUID)
+// 	if err != "" {
+// 		return "", err
+// 	}
+// 	esr.streams = eventStream
 
-	// if aggregateRootClass != classname {
-	// 	return fmt.Println("AggregateRootNotFoundException")
-	// }
+// 	aggregateRootClass := EventStreamRoot.GetClassName(eventStream)
 
-	// if expectedVersion && EventStream.GetVersion != expectedVersion {
-	// 	return fmt.Println("AggregateRootNotFoundException")
-	// }
+// 	if aggregateRootClass != classname {
+// 		// return fmt.Println("AggregateRootNotFoundException")
+// 	}
+// 	var versionInfo int
+// 	versionInfo = EventStreamRoot.GetVersion()
+// 	if expectedVersion != 0 && versionInfo != expectedVersion {
+// 		return fmt.Println("AggregateRootNotFoundException")
+// 	}
 
-	// AggregateRoot = AggregateRoot.LoadFromEventStream(eventStream)
-}
+// 	AggregateRoot = AggregateRoot.LoadFromEventStream(eventStream)
+// }
 
 func (esr EventSourceRepository) save(aggregateroot AggregateRoot) {
 	// id := AggregateRoot.getId()

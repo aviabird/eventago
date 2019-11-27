@@ -7,7 +7,7 @@ import (
 // AggregateMain struct used for all aggregate function.
 type AggregateMain struct {
 	id    string
-	event []string
+	event []EventStream
 }
 
 // AggregateRoot interface used to declare all functions.
@@ -33,25 +33,15 @@ func (a *AggregateMain) GetID() string {
 }
 
 // Apply method return for event present or not in this programm.
-func (a *AggregateMain) Apply(ev DomainEvent) {
-	// go executeEvent(ev)
-	// var event AggregateMain
-	// a.event = append(event.event[0:], ev)
-}
-
-// LoadFromEventStream implements the Events method of the Aggregate interface.
-func (a AggregateMain) LoadFromEventStream(eventstream EventStream) {
-	if a.event == nil {
-		fmt.Println("AggregateRoot was already created from event stream and cannot be hydrated again.")
-	}
-	a.SetID(eventstream.getUUID())
-	// for _, ev := range a.event {
-	// 	// a.
-	// }
-}
+// func (a *AggregateMain) Apply(ev DomainEvent) {
+// 	// go executeEvent(ev)
+// 	// var event AggregateMain
+// 	a.event = append(a.event, ev)
+// }
 
 // func executeEvent(event DomainEvent) {
-// 	eventname := EventName(event)
+// 	var evnetname EventNameRoot
+// 	evnetname = evnetname(event)
 // 	method := fmt.Sprintf("apply%s", eventname)
 
 // 	if event != method {
@@ -59,6 +49,17 @@ func (a AggregateMain) LoadFromEventStream(eventstream EventStream) {
 // 	}
 // 	method(event)
 // }
+
+// LoadFromEventStream implements the Events method of the Aggregate interface.
+func (a AggregateMain) LoadFromEventStream(eventstream EventStream) {
+	if a.event == nil {
+		fmt.Println("AggregateRoot was already created from event stream and cannot be hydrated again.")
+	}
+	a.SetID(eventstream.getUUID())
+	for _, ev := range a.event {
+		fmt.Println(ev)
+	}
+}
 
 // IncrementVersion increments the v of the aggregate and should be called
 // after an event has been applied successfully in ApplyEvent.
@@ -77,7 +78,7 @@ func (a AggregateMain) LoadFromEventStream(eventstream EventStream) {
 // }
 
 // pullDomainEvents is used for get event and return events
-func (a *AggregateMain) pullDomainEvents() []string {
+func (a *AggregateMain) pullDomainEvents() []EventStream {
 	event := a.event
 	a.event = nil
 	return event
