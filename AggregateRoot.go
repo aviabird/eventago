@@ -2,6 +2,7 @@ package eventago
 
 import (
 	"fmt"
+	// EventStore "dummy_bank/dummycqrs/eventago/EventStore"
 )
 
 // AggregateMain struct used for all aggregate function.
@@ -16,10 +17,8 @@ type AggregateRoot interface {
 	event()
 	SetID(UUID string)
 	GetID() string
-	IncrementVersion()
 	LoadFromEventStream()
 	pullDomainEvents()
-	executeEvent()
 }
 
 // SetID stores the EventMessage in the changes collection.
@@ -32,24 +31,6 @@ func (a *AggregateMain) GetID() string {
 	return a.id
 }
 
-// Apply method return for event present or not in this programm.
-// func (a *AggregateMain) Apply(ev DomainEvent) {
-// 	// go executeEvent(ev)
-// 	// var event AggregateMain
-// 	a.event = append(a.event, ev)
-// }
-
-// func executeEvent(event DomainEvent) {
-// 	var evnetname EventNameRoot
-// 	evnetname = evnetname(event)
-// 	method := fmt.Sprintf("apply%s", eventname)
-
-// 	if event != method {
-// 		fmt.Println("There is no event named %s that can be applied", method)
-// 	}
-// 	method(event)
-// }
-
 // LoadFromEventStream implements the Events method of the Aggregate interface.
 func (a AggregateMain) LoadFromEventStream(eventstream EventStream) {
 	if a.event == nil {
@@ -60,22 +41,6 @@ func (a AggregateMain) LoadFromEventStream(eventstream EventStream) {
 		fmt.Println(ev)
 	}
 }
-
-// IncrementVersion increments the v of the aggregate and should be called
-// after an event has been applied successfully in ApplyEvent.
-// func (a *AggregateMain) IncrementVersion() {
-// 	a.v++
-// }
-
-//ClearAllEvents removes all unpersisted events from the aggregate.
-// func (a *AggregateMain) ClearAllEvents() {
-// 	a.events = []string
-// }
-
-// TrackAllEvents stores the EventMessage in the changes collection.
-// func (a *AggregateMain) TrackAllEvents(event EventMessage) {
-// 	a.events = append(a.events, event)
-// }
 
 // pullDomainEvents is used for get event and return events
 func (a *AggregateMain) pullDomainEvents() []EventStream {
