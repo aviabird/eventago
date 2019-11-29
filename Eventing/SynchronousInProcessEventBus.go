@@ -1,5 +1,7 @@
 package eventago
 
+//
+
 //SynchronousInProcessEventBus SynchronousInProcessEventBus
 type SynchronousInProcessEventBus struct {
 	locator string

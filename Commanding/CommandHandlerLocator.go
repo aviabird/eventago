@@ -1,4 +1,4 @@
-package eventago
+package commanding
 
 // CommandHandlerLocator is for locator
 type CommandHandlerLocator struct {
@@ -7,5 +7,5 @@ type CommandHandlerLocator struct {
 
 // CommandHandlerLocatorroot CommandHandlerLocatorroot
 type CommandHandlerLocatorroot interface {
-	getCommandHandler(command CommandRoot)
+	// getCommandHandler(command CommandRoot)
 }
