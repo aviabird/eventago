@@ -2,7 +2,6 @@ package eventago
 
 import (
 	"fmt"
-	// EventStore "dummy_bank/dummycqrs/eventago/EventStore"
 )
 
 // AggregateMain struct used for all aggregate function.

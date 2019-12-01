@@ -1,5 +1,7 @@
 package eventago
 
+import eventago "github.com/aviabird/eventago"
+
 // EventNameRoot decleare all event name root
 type EventNameRoot struct {
 	event       string
@@ -13,8 +15,8 @@ type EventName interface {
 	SetEventName()
 }
 
-func (eventname *EventNameRoot) init(event DomainEvent) {
-	eventname.event = event.event
+func (eventname *EventNameRoot) init(event eventago.DomainEvent) {
+	// eventname.event = eventago.DomainEvent.event
 }
 
 // GetEventName return event name

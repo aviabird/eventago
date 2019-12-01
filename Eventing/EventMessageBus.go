@@ -1,6 +1,8 @@
 package eventago
 
+import eventago "github.com/aviabird/eventago"
+
 // EventMessageBus EventMessageBus
 type EventMessageBus interface {
-	publish(event DomainEvent)
+	publish(event eventago.DomainEvent)
 }

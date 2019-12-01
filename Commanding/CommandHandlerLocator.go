@@ -1,5 +1,7 @@
 package commanding
 
+import eventago "github.com/aviabird/eventago"
+
 // CommandHandlerLocator is for locator
 type CommandHandlerLocator struct {
 	locator string
@@ -7,5 +9,5 @@ type CommandHandlerLocator struct {
 
 // CommandHandlerLocatorroot CommandHandlerLocatorroot
 type CommandHandlerLocatorroot interface {
-	// getCommandHandler(command CommandRoot)
+	getCommandHandler(command eventago.CommandRoot)
 }

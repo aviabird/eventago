@@ -1,8 +1,8 @@
 package commanding
 
-// import Command "github.com/aviabird/eventago"
+import eventago "github.com/aviabird/eventago"
 
 // CommandBus interface for handle related
 type CommandBus interface {
-	// handle(command Command)
+	handle(command eventago.Command)
 }

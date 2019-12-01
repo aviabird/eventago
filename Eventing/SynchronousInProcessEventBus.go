@@ -1,6 +1,6 @@
 package eventago
 
-//
+import eventago "github.com/aviabird/eventago"
 
 //SynchronousInProcessEventBus SynchronousInProcessEventBus
 type SynchronousInProcessEventBus struct {
@@ -9,18 +9,18 @@ type SynchronousInProcessEventBus struct {
 
 // SynchronousInProcessEventBusRoot SynchronousInProcessEventBusRoot
 type SynchronousInProcessEventBusRoot interface {
-	publish(ev DomainEvent, mehl MemoryEventHandlerLocatorRoot)
-	invokeEventHandler(service string, eventname string, ev DomainEvent)
+	publish(ev eventago.DomainEvent, mehl MemoryEventHandlerLocatorRoot)
+	invokeEventHandler(service string, eventname string, ev eventago.DomainEvent)
 }
 
 func (s *SynchronousInProcessEventBus) init(event EventHandlerLocator) {
 	s.locator = event.locator
 }
 
-func publish(ev DomainEvent, mehl MemoryEventHandlerLocatorRoot) {
-	eventdata := new(EventNameRoot)
-	eventdata.aggregateID = ev.aggregateID
-	eventdata.event = ev.event
+func publish(ev eventago.DomainEvent, mehl MemoryEventHandlerLocatorRoot) {
+	eventdata := new(eventago.EventNameRoot)
+	eventdata.aggregateID = eventago.aggregateID
+	eventdata.event = eventago.event
 
 	// services := mehl.getHandlersForEvent()
 
@@ -29,7 +29,7 @@ func publish(ev DomainEvent, mehl MemoryEventHandlerLocatorRoot) {
 	// }
 }
 
-func invokeEventHandler(service string, eventname string, ev DomainEvent) {
+func invokeEventHandler(service string, eventname string, ev eventago.DomainEvent) {
 	// methodName := eventname
 	// err := service.methodName(ev)
 	// if err != nil {
